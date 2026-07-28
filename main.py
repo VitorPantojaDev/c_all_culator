@@ -168,7 +168,7 @@ elif st.session_state.type_calc == "Financial":
         [
             "Select...",
             "Monthly Expenses",
-            "Financial Runaway",
+            "Financial Runway",
             "Creating Reserve Funding",            
         ],
     )
@@ -198,7 +198,7 @@ elif st.session_state.type_calc == "Financial":
         else:
             st.success(f"Balance: {income - total_expense}")
 
-    elif "Financial Runaway" in operation_input:
+    elif "Financial Runway" in operation_input:
         savings = st.number_input("Type your total savings: ", value=0.0)
         monthly_yield = st.number_input("Type approximate monthly yield in % (0,5 suggested for saving account): ", value=0.5)
         withdraw = st.number_input("Type your montly withdraw: ", value=0.0)
@@ -250,11 +250,10 @@ elif st.session_state.type_calc == "Financial":
 #bottom
 with st.bottom:
 
-    st.write("Personal Project to practice Python by Vitor A Pantoja")
-    link1, link2, link3 = st.columns(3)
+    st.write("Personal Project by Vitor A Pantoja")
+    st.write("vitorpantoja.dev@gmail.com")
+    link1, link2 = st.columns(2)
     with link1:
-        st.link_button("E-mail", "vitorpantoja.dev@gmail.com")
-    with link2:
         st.link_button("Github", "https://github.com/VitorPantojaDev")
-    with link3:
+    with link2:
         st.link_button("Linkedin", "https://www.linkedin.com/in/vitorapantoja/")

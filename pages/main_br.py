@@ -250,11 +250,10 @@ elif st.session_state.type_calc == "Financeiro":
 #bottom
 with st.bottom:
 
-    st.write("Projeto pessoal para praticar Python por Vitor A Pantoja")
-    link1, link2, link3 = st.columns(3)
+    st.write("Projeto pessoal por Vitor A Pantoja")
+    st.write("vitorpantoja.dev@gmail.com")
+    link1, link2 = st.columns(2)
     with link1:
-        st.link_button("E-mail", "vitorpantoja.dev@gmail.com")
-    with link2:
         st.link_button("Github", "https://github.com/VitorPantojaDev")
-    with link3:
+    with link2:
         st.link_button("Linkedin", "https://www.linkedin.com/in/vitorapantoja/")

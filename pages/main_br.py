@@ -64,5 +64,7 @@ if st.session_state.type_calc == "Básica":
         else:
             st.warning("Por favor, selecione uma operação válida.")
 
+
+
 elif type_calc in ["cientifica", "material dourado", "dose de medicao", "rendimentos"]:
     st.info(f"A seção de cientifica, material dourado, dose de medicao, rendimentos está em desenvolvimento.")

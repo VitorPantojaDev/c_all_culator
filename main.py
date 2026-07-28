@@ -27,7 +27,7 @@ if st.sidebar.button("Finantial"):
 
 type_calc = st.session_state.type_calc
 
-#contas básicas
+#basic math
 if st.session_state.type_calc == "Basic Math":
     st.markdown("### 🔢 Basic Opertation")
 
@@ -64,5 +64,52 @@ if st.session_state.type_calc == "Basic Math":
         else:
             st.warning("Please, select a valid operation.")
 
-elif type_calc in ["Scientific", "Golden Material", "Medication Dosis", "Finantial"]:
+#golden material
+elif st.session_state.type_calc == "Golden Material":
+    st.markdown("### 🟨 Golden Mateiral")
+
+    num_a = st.number_input("Type first number: ", value=0)
+    dez_a = num_a
+    while dez_a > 10:
+        st.write("# "+("🟨"*10))
+        dez_a = dez_a - 10
+    st.write("# "+("🟨"*dez_a))
+
+    num_b = st.number_input("Type second number: ", value=0)
+    dez_b = num_b
+    while dez_b > 10:
+        st.write("# "+("🟨"*10))
+        dez_b = dez_b - 10
+    st.write("# "+("🟨"*dez_b))
+
+    operation_input = st.selectbox(
+        "Choose the operation:",
+        [
+            "Select...",
+            "+ (Addition)",
+            "- (Subtraction)",
+        ],
+    )
+
+    if st.button("Calculate"):
+        if "+ (Addition)" in operation_input:
+            result = num_a + num_b
+            while result > 10:
+                st.write("# "+("🟨"*10))
+                result = result - 10
+            st.write("# "+("🟨"*result))
+                           
+        elif "- (Subtraction)" in operation_input:
+            if num_b <= num_a:
+                result = num_a - num_b
+                while result > 10:
+                    st.write("# "+("🟨"*10))
+                    result = result - 10
+                st.write("# "+("🟨"*result))
+            else:
+                st.write("## You can't take away more cubes than you have")
+
+        
+
+elif type_calc in ["Scientific", "Medication Dosis", "Finantial"]:
     st.info(f"scient, golden, dosis, fin in development.")

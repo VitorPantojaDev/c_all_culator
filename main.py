@@ -22,8 +22,8 @@ if st.sidebar.button("Scientific"):
     st.session_state.type_calc = "Scientific"
 if st.sidebar.button("Medication Dosis"):
     st.session_state.type_calc = "Medication Dosis"
-if st.sidebar.button("Finantial"):
-    st.session_state.type_calc = "Finantial"
+if st.sidebar.button("Financial"):
+    st.session_state.type_calc = "Financial"
 
 type_calc = st.session_state.type_calc
 
@@ -109,7 +109,58 @@ elif st.session_state.type_calc == "Golden Material":
             else:
                 st.write("## You can't take away more cubes than you have")
 
-        
+#scientific
+elif st.session_state.type_calc == "Scientific":
+    st.markdown("### 🥼 Scientific")
 
-elif type_calc in ["Scientific", "Medication Dosis", "Finantial"]:
-    st.info(f"scient, golden, dosis, fin in development.")
+    operation_input = st.selectbox(
+        "Choose the operation:",
+        [
+            "Select...",
+            "% (Percentage)",
+            "√² (Square root)",
+            "x² (Squared)",
+            "x³ (Cubed)",
+        ],
+    )
+
+    if "% (Percentage)" in operation_input:
+        num_a = st.number_input("Type first number: ", value=0.0)
+        num_b = st.number_input("Type second number: ", value=0.0)
+        st.write(num_a, "%", num_b)
+        st.success(f"Result: {num_a * num_b / 100}")
+
+    elif "√² (Square root)" in operation_input:
+        num_a = st.number_input("Type your number: ", value=0.0)
+        st.success(f"Result: {num_a ** 0.5}")
+
+    elif "x² (Squared)" in operation_input:
+        num_a = st.number_input("Type your number: ", value=0.0)
+        st.success(f"Result: {num_a ** 2}")
+            
+    elif "x³ (Cubed)" in operation_input:
+        num_a = st.number_input("Type your number: ", value=0.0)
+        st.success(f"Result: {num_a ** 3}")
+
+    else:
+        st.warning("Please, select a valid operation.")          
+
+#medication dosis
+elif st.session_state.type_calc == "Medication Dosis":
+    st.markdown("### 💊 Medication Dosis")
+
+    weight = st.number_input("Type the patient weight (kg): ", value=0.0)
+    dosis = st.number_input("Type dosis (mg/kg): ", value=0.0)
+    conc = st.number_input("Type medication concentration (mg/ml or mg/pill): ", value=0.0)
+
+    if weight <= 0 or weight <= 0 or conc <= 0:
+        st.warning("Please, choose valid parameters.")
+    else:
+        dosage = dosis * weight / conc
+        st.success(f"Dosage: {dosage}")
+
+#financial
+elif st.session_state.type_calc == "Financial":
+    st.markdown("### 🪙 Financial")
+
+    st.warning("Unfinished")

@@ -163,4 +163,4 @@ elif st.session_state.type_calc == "Medication Dosis":
 elif st.session_state.type_calc == "Financial":
     st.markdown("### 🪙 Financial")
 
-    st.warning("Unfinished")
+    st.warning("Ongoing")

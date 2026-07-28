@@ -27,7 +27,7 @@ if st.sidebar.button("Financeiro"):
 
 type_calc = st.session_state.type_calc
 
-#contas básicas
+#basic math
 if st.session_state.type_calc == "Básica":
     st.markdown("### 🔢 Operações Básicas")
 
@@ -64,7 +64,105 @@ if st.session_state.type_calc == "Básica":
         else:
             st.warning("Por favor, selecione uma operação válida.")
 
+#golden material
+elif st.session_state.type_calc == "Material Dourado":
+    st.markdown("### 🟨 Material Dourado")
+
+    num_a = st.number_input("Digite o primeiro número: ", value=0)
+    dez_a = num_a
+    while dez_a > 10:
+        st.write("# "+("🟨"*10))
+        dez_a = dez_a - 10
+    st.write("# "+("🟨"*dez_a))
+
+    num_b = st.number_input("Digite o segundo número: ", value=0)
+    dez_b = num_b
+    while dez_b > 10:
+        st.write("# "+("🟨"*10))
+        dez_b = dez_b - 10
+    st.write("# "+("🟨"*dez_b))
+
+    operation_input = st.selectbox(
+        "Escolha a operação:",
+        [
+            "Selecione...",
+            "+ (Soma)",
+            "- (Subtração)",
+        ],
+    )
+
+    if st.button("Calcular"):
+        if "+ (Soma)" in operation_input:
+            result = num_a + num_b
+            while result > 10:
+                st.write("# "+("🟨"*10))
+                result = result - 10
+            st.write("# "+("🟨"*result))
+                           
+        elif "- (Subtração)" in operation_input:
+            if num_b <= num_a:
+                result = num_a - num_b
+                while result > 10:
+                    st.write("# "+("🟨"*10))
+                    result = result - 10
+                st.write("# "+("🟨"*result))
+            else:
+                st.write("## Você não pode tirar mais do que você tem")
+
+#scientific
+elif st.session_state.type_calc == "Científica":
+    st.markdown("### 🥼 Científica")
+
+    operation_input = st.selectbox(
+        "Escolha a operação:",
+        [
+            "Selecione...",
+            "% (Porcentagem)",
+            "√² (Raiz Quadrada)",
+            "x² (Elevado ao quadrado)",
+            "x³ (Elevado ao cubo)",
+        ],
+    )
+
+    if "% (Porcentagem)" in operation_input:
+        num_a = st.number_input("Digite o primeiro número: ", value=0.0)
+        num_b = st.number_input("Digite o segundo número: ", value=0.0)
+        st.write(num_a, "%", num_b)
+        st.success(f"Resultado: {num_a * num_b / 100}")
+
+    elif "√² (Raiz Quadrada)" in operation_input:
+        num_a = st.number_input("Digite o seu número: ", value=0.0)
+        st.success(f"Resultado: {num_a ** 0.5}")
+
+    elif "x² (Elevado ao quadrado)" in operation_input:
+        num_a = st.number_input("Digite o seu número: ", value=0.0)
+        st.success(f"Resultado: {num_a ** 2}")
+            
+    elif "x³ (Elevado ao cubo)" in operation_input:
+        num_a = st.number_input("Digite o seu número: ", value=0.0)
+        st.success(f"Resultado: {num_a ** 3}")
+
+    else:
+        st.warning("Por favor, selecione uma operação válida.")          
+
+#medication dosis
+elif st.session_state.type_calc == "Dose de Medicação":
+    st.markdown("### 💊 Dose de Medicação")
+
+    weight = st.number_input("Digite o peso do paciente (kg): ", value=0.0)
+    dosis = st.number_input("Digite a dose (mg/kg): ", value=0.0)
+    conc = st.number_input("Digite a concentração da medicação (mg/ml or mg/pill): ", value=0.0)
+
+    if weight <= 0 or weight <= 0 or conc <= 0:
+        st.warning("Por favor, escolha paramêtros válidos.")
+    else:
+        dosage = dosis * weight / conc
+        st.success(f"Dose: {dosage}")
+
+#financial
+elif st.session_state.type_calc == "Financeiro":
+    st.markdown("### 🪙 Financeiro")
+
+    st.warning("Em andamento")
 
 
-elif type_calc in ["cientifica", "material dourado", "dose de medicao", "rendimentos"]:
-    st.info(f"A seção de cientifica, material dourado, dose de medicao, rendimentos está em desenvolvimento.")
